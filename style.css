@@ -1,0 +1,134 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.flower {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, #ff8c00, #ff4500);
+    border-radius: 50%;
+    animation: bloom 5s ease-in-out infinite alternate;
+}
+
+.petal {
+    position: absolute;
+    width: 50px;
+    height: 100px;
+    background: linear-gradient(transparent, #ff8c00);
+    border-radius: 50%;
+    top: -10px;
+    animation: fall 2s ease-in-out infinite alternate;
+}
+
+.petal:nth-child(1) {
+    top: 20px;
+    left: 50px;
+    transform: rotate(0deg);
+}
+
+.petal:nth-child(2) {
+    top: 70px;
+    left: 130px;
+    transform: rotate(45deg);
+}
+
+.petal:nth-child(3) {
+    top: 140px;
+    left: 90px;
+    transform: rotate(90deg);
+}
+
+.petal:nth-child(4) {
+    top: 70px;
+    left: 10px;
+    transform: rotate(135deg);
+}
+
+.leaf {
+    position: absolute;
+    width: 40px;
+    height: 100px;
+    background-color: green;
+    border-radius: 50%;
+    top: 80px;
+    left: 80px;
+    transform-origin: top center;
+    animation: sway 2s ease-in-out infinite alternate;
+}
+
+.leaf::before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 80px;
+    background-color: green;
+    border-radius: 50%;
+    top: -70px;
+    left: 0;
+    transform-origin: top center;
+    transform: rotate(45deg);
+    animation: sway 2s ease-in-out infinite alternate;
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    clip-path: polygon(
+        50% 15%, 60% 0%, 100% 0%,
+        100% 35%, 85% 50%, 100% 65%,
+        100% 100%, 50% 90%, 0% 100%,
+        0% 65%, 15% 50%, 0% 35%, 40% 0%
+    );
+    animation: fireworks 2s ease-in-out infinite;
+}
+
+@keyframes bloom {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes fall {
+    from {
+        transform: translateY(-20px);
+    }
+    to {
+        transform: translateY(20px);
+    }
+}
+
+@keyframes sway {
+    from {
+        transform: rotate(5deg);
+    }
+    to {
+        transform: rotate(-5deg);
+    }
+}
+
+@keyframes fireworks {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-50px) scale(1.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(-100px) scale(2);
+        opacity: 0;
+    }
+}
